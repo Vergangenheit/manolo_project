@@ -8,7 +8,8 @@ from io import BytesIO
 
 def process(file, save_df: bool = False):
     # read file
-    df = pd.read_excel(file, usecols=list(range(5)))
+    # df = pd.read_excel(file, usecols=list(range(5)))
+    df = pd.read_excel(file)
     # put column unique data them in lists
     lists = {}
     for col in df.columns:
