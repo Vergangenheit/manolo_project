@@ -2,3 +2,5 @@ data/*.xlsx
 venv/
 storage/
 *.log
+.ipynb_checkpoints
+.idea
