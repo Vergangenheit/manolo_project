@@ -1,18 +1,19 @@
 import pandas as pd
 from pandas import DataFrame, ExcelWriter
 import numpy as np
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Union
 import itertools
 import pathlib
 import openpyxl
 from io import BytesIO
+from tempfile import SpooledTemporaryFile
 
 PACKAGE_ROOT = pathlib.Path().resolve()
 
 
 # df = pd.read_excel(PACKAGE_ROOT / 'data/TM_Parco_51.xlsx', usecols=list(range(5)))
 
-def process(file: str, save_df: bool = False):
+def process(file: Union[str, SpooledTemporaryFile], save_df: bool = False):
     # read file
     # df = pd.read_excel(file, usecols=list(range(5)))
     df: DataFrame = pd.read_excel(file)
