@@ -4,4 +4,3 @@ storage/
 *.log
 .ipynb_checkpoints
 .idea
-backend/
