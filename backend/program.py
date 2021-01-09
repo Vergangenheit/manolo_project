@@ -13,7 +13,7 @@ PACKAGE_ROOT = pathlib.Path().resolve()
 
 # df = pd.read_excel(PACKAGE_ROOT / 'data/TM_Parco_51.xlsx', usecols=list(range(5)))
 
-def process(file: Union[str, SpooledTemporaryFile], save_df: bool = False):
+def process(file: Union[str, SpooledTemporaryFile], save_df: bool = False) -> DataFrame:
     # read file
     # df = pd.read_excel(file, usecols=list(range(5)))
     df: DataFrame = pd.read_excel(file)
@@ -35,7 +35,7 @@ def process(file: Union[str, SpooledTemporaryFile], save_df: bool = False):
         # result.to_excel(pathlib.Path(file_path).resolve().parent / 'results.xlsx')
         result.to_excel(name)
 
-    # return result
+    return result
 
 
 def to_excel(df: DataFrame) -> bytes:

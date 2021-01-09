@@ -1,7 +1,13 @@
 <html>
 <body>
-    <div class="container" align="left">
-		<a href="/return-file/" target="blank"><button class='btn btn-default'>Download!</button></a>
-   </div>
+{% block content %}
+    {% if b64 %}
+        <a href="data:application/octet-stream;base64,{{ b64.decode() }}" download="extract.xlsx">Download excel file</a>
+    {% else %}
+        <div class="container" align="left">
+		    <a href="/return-file/" target="blank"><button class='btn btn-default'>Download!</button></a>
+        </div>
+    {% endif %}
+{% endblock content %}
 </body>
 </html>

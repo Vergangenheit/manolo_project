@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, send_file
 from werkzeug.datastructures import FileStorage
-from program import process
+from program import process, to_excel
 import os
+from pandas import DataFrame
+import base64
 
 app: Flask = Flask(__name__)
 
@@ -15,8 +17,10 @@ def home():
 def upload_file():
     if request.method == 'POST':
         uploaded_file: FileStorage = request.files.get("file")
-        process(uploaded_file.stream, True)
-        # TODO return excel file of df from process function and send it to download view
+        result: DataFrame = process(uploaded_file.stream, False)
+        val: bytes = to_excel(result)
+        b64: bytes = base64.b64encode(val)
+        return render_template('downloads.html', b64=b64)
     return redirect(url_for('file_downloads'))
 
 
